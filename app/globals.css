@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0f1c24;
+  --bg2: #12171c;
+  --text: #e6e7e8;
+  --muted: #9ba3aa;
+  --accent: #b8a27a;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 0.01em;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  bottom: -3px;
+  background-color: rgb(184 162 122 / 0.9);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition:
+    transform 220ms ease-out,
+    opacity 220ms ease-out;
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  opacity: 0.9;
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.font-heading {
+  font-family: var(--font-playfair), serif;
+}
+
+.section-label {
+  font-family: var(--font-playfair), serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.divider {
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.quiet-button {
+  border: 1px solid var(--accent);
+  color: var(--text);
+  transition:
+    background-color 180ms ease-out,
+    color 180ms ease-out;
+}
+
+.quiet-button:hover {
+  background-color: rgb(184 162 122 / 0.08);
+}
+
+.editorial-plate {
+  background:
+    linear-gradient(rgb(15 28 36 / 0.78), rgb(15 28 36 / 0.78)),
+    repeating-linear-gradient(
+      90deg,
+      rgb(230 231 232 / 0.05) 0 1px,
+      transparent 1px 64px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(230 231 232 / 0.04) 0 1px,
+      transparent 1px 64px
+    ),
+    radial-gradient(circle at 30% 20%, rgb(230 231 232 / 0.08), transparent 50%);
+}
+
+.contour-stroke-a {
+  stroke: rgb(184 162 122 / 0.14);
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: contour-draw 8s ease-out forwards;
+}
+
+.contour-stroke-b {
+  stroke: rgb(230 231 232 / 0.06);
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: contour-draw 10s ease-out forwards;
+}
+
+@keyframes contour-draw {
+  from {
+    stroke-dashoffset: 150;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .contour-stroke-a,
+  .contour-stroke-b {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .link-underline::after {
+    transition: none;
+  }
+}
