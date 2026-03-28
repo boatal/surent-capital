@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Barlow, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { siteMetadata } from "@/lib/seo/metadata";
 
-const inter = Inter({
-  variable: "--font-inter",
+const sans = Barlow({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const serif = Cormorant_Garamond({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["300", "400", "600"],
+  style: ["normal", "italic"],
 });
 
-export const metadata: Metadata = {
-  title: "Surent Capital",
-  description:
-    "Surent Capital is a private real estate credit platform structuring capital solutions for experienced sponsors operating in time-sensitive environments.",
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -25,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={`${sans.variable} ${serif.variable}`}>{children}</body>
     </html>
   );
 }

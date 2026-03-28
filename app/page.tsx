@@ -1,25 +1,37 @@
-import { HeroSection } from "@/components/home/HeroSection";
-import { InquiryCtaSection } from "@/components/home/InquiryCtaSection";
-import { MandateSection } from "@/components/home/MandateSection";
-import { PlatformSection } from "@/components/home/PlatformSection";
-import { SelectivitySection } from "@/components/home/SelectivitySection";
-import { StrategySection } from "@/components/home/StrategySection";
-import { Footer } from "@/components/site/Footer";
-import { Header } from "@/components/site/Header";
+import { HomePageView } from "@/components/pages/SurentPageViews";
+import { SchemaScript } from "@/components/site/SchemaScript";
+import { createPageMetadata } from "@/lib/seo/metadata";
+import {
+  breadcrumbSchema,
+  organizationSchema,
+  webpageSchema,
+  websiteSchema,
+} from "@/lib/seo/schema";
 
-export default function Home() {
+export const metadata = createPageMetadata({
+  title: "Structured Capital For Complex Real Estate",
+  description:
+    "Surent Capital provides structured capital for complex real estate situations where timing, complexity, and execution certainty determine the outcome.",
+  path: "/",
+});
+
+export default function HomePage() {
   return (
-    <div className="min-h-screen w-full bg-[var(--bg)] text-[var(--text)]">
-      <Header />
-      <main className="w-full pt-20">
-        <HeroSection />
-        <MandateSection />
-        <StrategySection />
-        <PlatformSection />
-        <SelectivitySection />
-        <InquiryCtaSection />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <SchemaScript
+        schemas={[
+          organizationSchema(),
+          websiteSchema(),
+          webpageSchema({
+            path: "/",
+            name: "Surent Capital",
+            description:
+              "Structured capital for complex real estate situations.",
+          }),
+          breadcrumbSchema([{ name: "Home", path: "/" }]),
+        ]}
+      />
+      <HomePageView />
+    </>
   );
 }

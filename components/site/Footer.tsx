@@ -1,18 +1,27 @@
 import Link from "next/link";
 
-export function Footer() {
+type FooterLink = {
+  href: string;
+  label: string;
+};
+
+type FooterProps = {
+  links: readonly FooterLink[];
+};
+
+export function Footer({ links }: FooterProps) {
   return (
-    <footer className="w-full border-t divider bg-[var(--bg)]">
-      <div className="flex w-full flex-col gap-4 px-6 py-8 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between md:px-10 lg:px-16 2xl:px-24">
-        <p>© {new Date().getFullYear()} Surent Capital. All rights reserved.</p>
-        <nav className="flex items-center gap-6">
-          <Link href="/privacy" className="link-underline py-1">
-            Privacy
-          </Link>
-          <Link href="/terms" className="link-underline py-1">
-            Terms
-          </Link>
+    <footer className="global-footer">
+      <div className="footer-shell">
+        <span className="footer-logo">Surent Capital</span>
+        <nav className="footer-nav" aria-label="Footer">
+          {links.map((link) => (
+            <Link key={`${link.href}-${link.label}`} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
         </nav>
+        <span className="footer-copy">&copy; 2025 Surent Capital &middot; Private</span>
       </div>
     </footer>
   );

@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { contactEmail } from "@/content/surent-capital/site-content";
 
 type InquiryPayload = {
   name?: string;
   company?: string;
   email?: string;
   phone?: string;
+  capitalType?: string;
   assetType?: string;
+  assetLocation?: string;
   loanAmount?: string;
   timeline?: string;
   summary?: string;
@@ -53,7 +56,9 @@ export async function POST(request: NextRequest) {
   const company = payload.company?.trim() ?? "";
   const email = payload.email?.trim() ?? "";
   const phone = payload.phone?.trim() ?? "";
+  const capitalType = payload.capitalType?.trim() ?? "";
   const assetType = payload.assetType?.trim() ?? "";
+  const assetLocation = payload.assetLocation?.trim() ?? "";
   const loanAmount = payload.loanAmount?.trim() ?? "";
   const timeline = payload.timeline?.trim() ?? "";
   const summary = payload.summary?.trim() ?? "";
@@ -86,7 +91,9 @@ export async function POST(request: NextRequest) {
     ["Company", company || "N/A"],
     ["Email", email],
     ["Phone", phone || "N/A"],
+    ["Capital Type", capitalType || "N/A"],
     ["Asset Type", assetType || "N/A"],
+    ["Asset Location", assetLocation || "N/A"],
     ["Loan Amount", loanAmount || "N/A"],
     ["Timeline", timeline || "N/A"],
     ["Summary", summary],
@@ -103,7 +110,7 @@ export async function POST(request: NextRequest) {
   try {
     await resend.emails.send({
       from: process.env.INQUIRY_FROM_EMAIL || "Surent Capital <no-reply@surentgroup.com>",
-      to: "rworld@surentgroup.com",
+      to: contactEmail,
       replyTo: email,
       subject,
       text,

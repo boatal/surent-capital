@@ -1,70 +1,60 @@
 "use client";
 
-import { Children, ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { type ReactNode, useEffect, useRef } from "react";
+
+type Delay = "rd1" | "rd2" | "rd3" | "rd4";
 
 type RevealProps = {
   children: ReactNode;
-  delay?: number;
   className?: string;
+  delay?: Delay | number;
   stagger?: boolean;
 };
 
-export function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  stagger = false,
-}: RevealProps) {
-  const reduceMotion = useReducedMotion();
+function resolveDelayClass(delay?: Delay | number) {
+  if (typeof delay === "string") return delay;
+  if (delay === undefined) return "";
+  if (delay >= 0.44) return "rd4";
+  if (delay >= 0.3) return "rd3";
+  if (delay >= 0.18) return "rd2";
+  return "rd1";
+}
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+export function Reveal({ children, className = "", delay }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const delayClass = resolveDelayClass(delay);
 
-  const parent = {
-    hidden: { opacity: 0, y: 8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1] as const,
-        delay,
-        staggerChildren: 0.08,
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      node.classList.add("visible");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          node.classList.add("visible");
+          observer.disconnect();
+        }
       },
-    },
-  };
+      { threshold: 0.18 },
+    );
 
-  const child = {
-    hidden: { opacity: 0, y: 8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      className={className}
-      variants={stagger ? parent : child}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      transition={
-        stagger
-          ? undefined
-          : { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const, delay }
-      }
+    <div
+      ref={ref}
+      className={`reveal${delayClass ? ` ${delayClass}` : ""}${
+        className ? ` ${className}` : ""
+      }`}
     >
-      {stagger
-        ? Children.map(children, (node, index) => (
-            <motion.div key={index} variants={child}>
-              {node}
-            </motion.div>
-          ))
-        : children}
-    </motion.div>
+      {children}
+    </div>
   );
 }

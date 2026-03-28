@@ -1,0 +1,12 @@
+Site: Surent Capital
+Summary: Surent Capital provides structured capital for complex real estate situations where timing, certainty, and structure determine the outcome.
+
+Key URLs:
+- /
+- /mandate
+- /strategy
+- /capital
+- /scenarios
+- /process
+- /about
+- /contact
