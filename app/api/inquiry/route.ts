@@ -38,6 +38,8 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: NextRequest) {
+  console.info("[inquiry] route hit");
+
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     request.headers.get("x-real-ip") ??
@@ -51,6 +53,17 @@ export async function POST(request: NextRequest) {
   }
 
   const payload = (await request.json()) as InquiryPayload;
+  console.info("[inquiry] payload parsed", {
+    hasName: Boolean(payload.name?.trim()),
+    hasCompany: Boolean(payload.company?.trim()),
+    hasEmail: Boolean(payload.email?.trim()),
+    hasCapitalType: Boolean(payload.capitalType?.trim()),
+    hasAssetType: Boolean(payload.assetType?.trim()),
+    hasAssetLocation: Boolean(payload.assetLocation?.trim()),
+    hasLoanAmount: Boolean(payload.loanAmount?.trim()),
+    hasTimeline: Boolean(payload.timeline?.trim()),
+    hasSummary: Boolean(payload.summary?.trim()),
+  });
 
   const name = payload.name?.trim() ?? "";
   const company = payload.company?.trim() ?? "";
@@ -76,6 +89,7 @@ export async function POST(request: NextRequest) {
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
+  console.info("[inquiry] resend key present", Boolean(resendApiKey));
   if (!resendApiKey) {
     return NextResponse.json(
       { error: "Email service is not configured." },
@@ -108,7 +122,15 @@ export async function POST(request: NextRequest) {
     .join("");
 
   try {
-    await resend.emails.send({
+    console.info("[inquiry] about to send", {
+      to: contactEmail,
+      from:
+        process.env.INQUIRY_FROM_EMAIL ||
+        "Surent Capital <no-reply@surentgroup.com>",
+      subject,
+    });
+
+    const { data, error } = await resend.emails.send({
       from: process.env.INQUIRY_FROM_EMAIL || "Surent Capital <no-reply@surentgroup.com>",
       to: contactEmail,
       replyTo: email,
@@ -117,8 +139,23 @@ export async function POST(request: NextRequest) {
       html: `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-family:Inter,Arial,sans-serif;font-size:14px;">${htmlRows}</table>`,
     });
 
-    return NextResponse.json({ ok: true });
-  } catch {
+    if (error) {
+      console.error("[inquiry] resend error", {
+        name: error.name,
+        message: error.message,
+      });
+      return NextResponse.json(
+        { error: "Unable to send inquiry right now." },
+        { status: 502 },
+      );
+    }
+
+    console.info("[inquiry] resend success", {
+      id: data?.id ?? null,
+    });
+    return NextResponse.json({ ok: true, id: data?.id ?? null });
+  } catch (error) {
+    console.error("[inquiry] unexpected error", error);
     return NextResponse.json(
       { error: "Unable to send inquiry right now." },
       { status: 500 },
