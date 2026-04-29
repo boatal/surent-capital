@@ -2,11 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/businessloan",
-      "destination": "https://app.advancefundsnetwork.com/partner-landing/6uB577iCWSWiELmF0Pxx2xleo0T2",
-      "permanent": true
-    },
-    {
       "source": "/(.*)",
       "has": [
         {
