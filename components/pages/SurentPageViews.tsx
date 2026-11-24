@@ -19,11 +19,11 @@ type Scenario = {
 };
 
 const shellClass =
-  "min-h-screen bg-[#0a0a08] text-[#e6e2d8] selection:bg-[#c8a96e]/20";
+  "min-h-screen bg-paper text-ink selection:bg-gold/20";
 const sectionTagClass =
-  "text-[0.58rem] font-light uppercase tracking-[0.35em] text-[#7a6741]";
+  "text-[0.58rem] font-light uppercase tracking-[0.35em] text-gold-ink";
 const bodyTextClass =
-  "text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-[#a09a8e]";
+  "text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-secondary";
 
 function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -54,10 +54,10 @@ function HomeTriptychCard({
   return (
     <Link href={href} className="triptych-card group flex h-full flex-col">
       <span className={sectionTagClass}>{tag}</span>
-      <p className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.2] text-[#e6e2d8]">
+      <p className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.2] text-ink">
         {title}
       </p>
-      <p className="mt-6 max-w-[22rem] text-[0.72rem] font-light leading-[2] tracking-[0.03em] text-[#a09a8e]">
+      <p className="mt-6 max-w-[22rem] text-[0.72rem] font-light leading-[2] tracking-[0.03em] text-secondary">
         {body}
       </p>
       <p className="triptych-arrow mt-10">
@@ -100,14 +100,14 @@ function HomePage() {
         <Reveal className="home-mandate-left">
           <div>
             <span className={sectionTagClass}>01 - Mandate</span>
-            <p className="mt-8 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.05] text-[#e6e2d8]">
+            <p className="mt-8 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.05] text-ink">
               We do not offer
               <br />
               financing.
               <br />
               We deploy
               <br />
-              <em className="not-italic text-[#c8a96e]">structured capital.</em>
+              <em className="not-italic text-gold-ink">structured capital.</em>
             </p>
           </div>
         </Reveal>
@@ -163,10 +163,10 @@ function HomePage() {
           <p className={sectionTagClass}>Present your situation</p>
         </Reveal>
         <Reveal delay={0.18}>
-          <p className="mx-auto mt-12 max-w-[43.75rem] font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+          <p className="mx-auto mt-12 max-w-[43.75rem] font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
             If the deal
             <br />
-            is <em className="not-italic text-[#c8a96e]">real,</em>
+            is <em className="not-italic text-gold-ink">real,</em>
             <br />
             we will know.
           </p>
@@ -178,7 +178,7 @@ function HomePage() {
           </Link>
         </Reveal>
         <Reveal delay={0.44}>
-          <p className="mt-8 text-[0.65rem] font-light tracking-[0.08em] text-[#5c5852]">
+          <p className="mt-8 text-[0.65rem] font-light tracking-[0.08em] text-muted">
             Direct sponsors only. We do not respond to unsolicited brokers.
           </p>
         </Reveal>
@@ -252,22 +252,22 @@ function MandatePage() {
 
   return (
     <SiteShell>
-      <section className="site-section relative overflow-hidden border-b border-white/[0.055]">
-        <span className="pointer-events-none absolute right-8 top-24 hidden font-serif text-[8rem] font-light tracking-[0.2em] text-[#c8a96e]/[0.04] xl:block">
+      <section className="site-section relative overflow-hidden border-b border-rule">
+        <span className="pointer-events-none absolute right-8 top-24 hidden font-serif text-[8rem] font-light tracking-[0.2em] text-gold-ink/[0.04] xl:block">
           MANDATE
         </span>
         <div className="site-container grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-end xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>What we do</span>
-              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                 Capital
                 <br />
                 for the
                 <br />
                 deal that
                 <br />
-                <em className="not-italic text-[#c8a96e]">exists,</em>
+                <em className="not-italic text-gold-ink">exists,</em>
                 <br />
                 not the one
                 <br />
@@ -295,22 +295,22 @@ function MandatePage() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container grid md:grid-cols-2">
           {blocks.map((block, index) => (
             <Reveal key={block.numeral} delay={index % 2 === 0 ? 0 : 0.18}>
               <article
-                className={`border-b border-white/[0.055] py-12 md:pr-12 ${
+                className={`border-b border-rule py-12 md:pr-12 ${
                   index % 2 === 0 ? "md:border-r" : ""
                 } ${index >= blocks.length - 2 ? "md:border-b-0" : ""}`}
               >
-                <span className="mb-6 block font-serif text-[1.1rem] italic text-[#7a6741]">
+                <span className="mb-6 block font-serif text-[1.1rem] italic text-gold-ink">
                   {block.numeral}
                 </span>
-                <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+                <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-ink">
                   {block.title}
                 </h2>
-                <p className="mt-6 max-w-[40rem] text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-[#a09a8e]">
+                <p className="mt-6 max-w-[40rem] text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-secondary">
                   {block.body}
                 </p>
               </article>
@@ -319,27 +319,27 @@ function MandatePage() {
         </div>
       </section>
 
-      <section className="site-section bg-[#0f0f0d] border-b border-white/[0.055]">
+      <section className="site-section bg-panel border-b border-rule">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-center xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>The Surent Position</span>
-              <p className="mt-8 font-serif text-[clamp(1.8rem,3vw,2.6rem)] font-light leading-[1.15] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(1.8rem,3vw,2.6rem)] font-light leading-[1.15] text-ink">
                 We are not filling a gap
                 <br />
                 in the market.
                 <br />
-                <span className="italic text-[#c8a96e]">We are the market</span>
+                <span className="italic text-gold-ink">We are the market</span>
                 <br />
                 that others cannot reach.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.18}>
-            <blockquote className="border-l border-[#7a6741] pl-8 font-serif text-[clamp(1.8rem,3vw,2.8rem)] font-light italic leading-[1.35] text-[#a09a8e]">
+            <blockquote className="border-l border-gold-ink pl-8 font-serif text-[clamp(1.8rem,3vw,2.8rem)] font-light italic leading-[1.35] text-secondary">
               &quot;The most valuable capital is not the cheapest capital - it is
               the capital that is{" "}
-              <strong className="font-light not-italic text-[#e6e2d8]">
+              <strong className="font-light not-italic text-ink">
                 present, structured, and certain
               </strong>{" "}
               when the deal requires it.&quot;
@@ -420,15 +420,15 @@ function StrategyPage() {
 
   return (
     <SiteShell>
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container grid gap-12 md:grid-cols-[2fr_3fr] md:items-end xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>How we think</span>
-              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                 The
                 <br />
-                <em className="not-italic text-[#c8a96e]">logic</em>
+                <em className="not-italic text-gold-ink">logic</em>
                 <br />
                 of our
                 <br />
@@ -456,19 +456,19 @@ function StrategyPage() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container">
           {principles.map((principle) => (
             <Reveal key={principle.numeral}>
-              <article className="grid gap-8 border-b border-white/[0.055] py-16 last:border-b-0 md:grid-cols-[80px_1fr_1.2fr] md:gap-16">
-                <div className="font-serif text-[2.5rem] font-light italic leading-none text-[#7a6741]">
+              <article className="grid gap-8 border-b border-rule py-16 last:border-b-0 md:grid-cols-[80px_1fr_1.2fr] md:gap-16">
+                <div className="font-serif text-[2.5rem] font-light italic leading-none text-gold-ink">
                   {principle.numeral}
                 </div>
                 <div>
-                  <h2 className="font-serif text-[clamp(1.4rem,2.2vw,2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+                  <h2 className="font-serif text-[clamp(1.4rem,2.2vw,2rem)] font-light leading-[1.15] text-ink">
                     {principle.title}
                   </h2>
-                  <p className="mt-6 text-[0.72rem] font-light leading-[2] tracking-[0.03em] text-[#a09a8e]">
+                  <p className="mt-6 text-[0.72rem] font-light leading-[2] tracking-[0.03em] text-secondary">
                     {principle.subtitle}
                   </p>
                 </div>
@@ -485,19 +485,19 @@ function StrategyPage() {
         </div>
       </section>
 
-      <section className="site-section border-b border-white/[0.055] bg-[#0f0f0d]">
+      <section className="site-section border-b border-rule bg-panel">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-center xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>The Thesis</span>
-              <p className="mt-8 font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.12] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.12] text-ink">
                 The most inefficient
                 <br />
                 moment in real estate
                 <br />
                 is the gap between
                 <br />
-                <em className="not-italic text-[#c8a96e]">a deal ready to close</em>
+                <em className="not-italic text-gold-ink">a deal ready to close</em>
                 <br />
                 and capital that cannot move.
               </p>
@@ -508,9 +508,9 @@ function StrategyPage() {
               {thesisItems.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-8 border-b border-white/[0.055] py-6 text-[0.75rem] font-light leading-[1.9] tracking-[0.03em] text-[#a09a8e] last:border-b-0"
+                  className="flex gap-8 border-b border-rule py-6 text-[0.75rem] font-light leading-[1.9] tracking-[0.03em] text-secondary last:border-b-0"
                 >
-                  <span className="font-serif text-[0.9rem] text-[#c8a96e]">
+                  <span className="font-serif text-[0.9rem] text-gold-ink">
                     -
                   </span>
                   <span>{item}</span>
@@ -617,16 +617,16 @@ function CapitalPage() {
 
   return (
     <SiteShell>
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container">
           <p className={sectionTagClass}>Investment Approach</p>
           <Reveal>
-            <p className="mt-8 max-w-[46.875rem] font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+            <p className="mt-8 max-w-[46.875rem] font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
               The instrument
               <br />
               is built around
               <br />
-              the <em className="not-italic text-[#c8a96e]">situation.</em>
+              the <em className="not-italic text-gold-ink">situation.</em>
             </p>
           </Reveal>
           <Reveal delay={0.18}>
@@ -640,7 +640,7 @@ function CapitalPage() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container">
           <Reveal>
             <div className="pb-10">
@@ -649,11 +649,11 @@ function CapitalPage() {
           </Reveal>
           {instruments.map((instrument, index) => (
             <Reveal key={`instrument-${index}-${instrument.meta[0][1]}`}>
-              <article className="grid gap-8 border-t border-white/[0.055] py-12 md:grid-cols-[1fr_1fr_1fr] md:gap-12">
-                <h2 className="font-serif text-[1.6rem] font-light leading-[1.15] text-[#e6e2d8]">
+              <article className="grid gap-8 border-t border-rule py-12 md:grid-cols-[1fr_1fr_1fr] md:gap-12">
+                <h2 className="font-serif text-[1.6rem] font-light leading-[1.15] text-ink">
                   {instrument.title}
                 </h2>
-                <div className="text-[0.75rem] font-light leading-[2] tracking-[0.03em] text-[#a09a8e]">
+                <div className="text-[0.75rem] font-light leading-[2] tracking-[0.03em] text-secondary">
                   {instrument.body.map((paragraph) => (
                     <p key={paragraph} className="mb-6 last:mb-0">
                       {paragraph}
@@ -663,10 +663,10 @@ function CapitalPage() {
                 <dl className="flex flex-col gap-5 pt-1">
                   {instrument.meta.map(([label, value]) => (
                     <div key={label} className="flex gap-6">
-                      <dt className="w-[90px] shrink-0 pt-0.5 text-[0.6rem] uppercase tracking-[0.2em] text-[#5c5852]">
+                      <dt className="w-[90px] shrink-0 pt-0.5 text-[0.6rem] uppercase tracking-[0.2em] text-muted">
                         {label}
                       </dt>
-                      <dd className="text-[0.72rem] text-[#a09a8e]">{value}</dd>
+                      <dd className="text-[0.72rem] text-secondary">{value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -676,12 +676,12 @@ function CapitalPage() {
         </div>
       </section>
 
-      <section className="site-section border-b border-white/[0.055] bg-[#0f0f0d]">
+      <section className="site-section border-b border-rule bg-panel">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-start xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>Deployment Parameters</span>
-              <p className="mt-8 font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-ink">
                 Where we deploy.
                 <br />
                 What we require.
@@ -698,14 +698,14 @@ function CapitalPage() {
               {parameters.map(([value, label], index) => (
                 <div
                   key={label}
-                  className={`border-b border-white/[0.055] py-8 ${
+                  className={`border-b border-rule py-8 ${
                     index % 2 === 0 ? "sm:pr-8 sm:border-r" : "sm:pl-8"
                   } ${index >= parameters.length - 2 ? "sm:border-b-0" : ""}`}
                 >
-                  <div className="font-serif text-[2rem] font-light leading-none text-[#c8a96e]">
+                  <div className="font-serif text-[2rem] font-light leading-none text-gold-ink">
                     {value}
                   </div>
-                  <div className="mt-2 text-[0.62rem] uppercase tracking-[0.15em] text-[#5c5852]">
+                  <div className="mt-2 text-[0.62rem] uppercase tracking-[0.15em] text-muted">
                     {label}
                   </div>
                 </div>
@@ -814,13 +814,13 @@ function ScenariosPage() {
 
   return (
     <SiteShell>
-      <section className="site-section relative overflow-hidden border-b border-white/[0.055]">
-        <span className="absolute inset-y-0 right-0 hidden w-[35%] border-l border-white/[0.055] md:block" />
+      <section className="site-section relative overflow-hidden border-b border-rule">
+        <span className="absolute inset-y-0 right-0 hidden w-[35%] border-l border-rule md:block" />
         <div className="site-container">
           <div className="relative max-w-[43.75rem]">
             <span className={sectionTagClass}>Real situations</span>
             <Reveal>
-              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                 The deals
                 <br />
                 that could not
@@ -840,19 +840,19 @@ function ScenariosPage() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container">
           {scenarios.map((scenario) => (
             <Reveal key={scenario.index}>
-              <article className="interaction-card grid gap-0 border-t border-white/[0.055] md:grid-cols-[1fr_1fr]">
-                <div className="border-b border-white/[0.055] py-14 md:border-b-0 md:border-r md:pr-12">
-                <span className="mb-8 block font-serif text-[0.85rem] italic text-[#7a6741]">
+              <article className="interaction-card grid gap-0 border-t border-rule md:grid-cols-[1fr_1fr]">
+                <div className="border-b border-rule py-14 md:border-b-0 md:border-r md:pr-12">
+                <span className="mb-8 block font-serif text-[0.85rem] italic text-gold-ink">
                   {scenario.index}
                 </span>
-                <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+                <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-ink">
                   {scenario.title}
                 </h2>
-                <p className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-[#7a6741]">
+                <p className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-gold-ink">
                   {scenario.subtitle}
                 </p>
               </div>
@@ -860,12 +860,12 @@ function ScenariosPage() {
                 {scenario.body.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="mb-8 text-[0.75rem] font-light leading-[2.1] tracking-[0.03em] text-[#a09a8e] last:mb-0"
+                    className="mb-8 text-[0.75rem] font-light leading-[2.1] tracking-[0.03em] text-secondary last:mb-0"
                   >
                     {paragraph}
                   </p>
                 ))}
-                <p className="mt-10 border-l border-[#7a6741] pl-6 text-[0.7rem] font-light italic leading-[1.9] text-[#e6e2d8]">
+                <p className="mt-10 border-l border-gold-ink pl-6 text-[0.7rem] font-light italic leading-[1.9] text-ink">
                   {scenario.outcome}
                 </p>
               </div>

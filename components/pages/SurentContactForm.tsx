@@ -27,10 +27,10 @@ const initialState: FormState = {
 };
 
 const fieldLabelClass =
-  "text-[0.6rem] uppercase tracking-[0.25em] text-[#5c5852]";
+  "text-[0.6rem] uppercase tracking-[0.25em] text-muted";
 const fieldBaseClass =
-  "w-full border-0 border-b border-white/[0.055] bg-transparent px-0 py-3 text-[0.78rem] font-light tracking-[0.05em] text-[#e6e2d8] outline-none transition-colors placeholder:text-[#5c5852] focus:border-[#c8a96e]";
-const selectFieldClass = `${fieldBaseClass} cursor-pointer appearance-none [&>option]:text-black`;
+  "w-full border-0 border-b border-field-rule bg-transparent px-0 py-3 text-[0.78rem] font-light tracking-[0.05em] text-ink transition-colors placeholder:text-muted focus:border-gold-ink";
+const selectFieldClass = `${fieldBaseClass} cursor-pointer appearance-none [&>option]:bg-paper`;
 
 export function SurentContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
@@ -96,10 +96,10 @@ export function SurentContactForm() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <p className="text-[0.58rem] uppercase tracking-[0.35em] text-[#7a6741]">
+        <p className="text-[0.58rem] uppercase tracking-[0.35em] text-gold-ink">
           Deal submission
         </p>
-        <p className="mt-8 max-w-[38rem] text-[0.73rem] font-light leading-[2] text-[#a09a8e]">
+        <p className="mt-8 max-w-[38rem] text-[0.73rem] font-light leading-[2] text-secondary">
           Complete the fields below. We review every submission personally. You
           will hear from us within one business day.
         </p>
@@ -216,13 +216,13 @@ export function SurentContactForm() {
         </label>
 
         <div className="flex flex-col gap-4 pt-2 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-[12.5rem] text-[0.6rem] leading-[1.8] tracking-[0.08em] text-[#5c5852]">
+          <p className="max-w-[12.5rem] text-[0.6rem] leading-[1.8] tracking-[0.08em] text-muted">
             We do not share submissions. Direct sponsors only.
           </p>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center gap-7 self-start border border-[#7a6741] px-8 py-5 text-[0.68rem] uppercase tracking-[0.22em] text-[#c8a96e] transition hover:-translate-y-0.5 hover:border-[#c8a96e] hover:bg-white/[0.02] disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex items-center gap-7 self-start border border-gold-ink px-8 py-5 text-[0.68rem] uppercase tracking-[0.22em] text-gold-ink transition hover:-translate-y-0.5 hover:border-gold-ink hover:bg-gold-wash disabled:cursor-not-allowed disabled:opacity-70"
           >
             <span>{isSubmitting ? "Submitting" : "Submit deal"}</span>
             <span aria-hidden>&rarr;</span>
@@ -230,14 +230,14 @@ export function SurentContactForm() {
         </div>
 
         {success ? (
-          <p className="text-[0.72rem] leading-[1.9] text-[#e6e2d8]">
+          <p className="text-[0.72rem] leading-[1.9] text-ink">
             Your submission has been received. If the situation fits our
             mandate, you will hear from us within one business day.
           </p>
         ) : null}
 
         {error ? (
-          <p className="text-[0.72rem] leading-[1.9] text-[#c8a96e]">{error}</p>
+          <p className="text-[0.72rem] leading-[1.9] text-gold-ink">{error}</p>
         ) : null}
       </form>
     </div>

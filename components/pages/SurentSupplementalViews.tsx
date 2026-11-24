@@ -6,11 +6,11 @@ import { Reveal } from "@/components/site/Reveal";
 import { SurentContactForm } from "./SurentContactForm";
 
 const shellClass =
-  "min-h-screen bg-[#0a0a08] text-[#e6e2d8] selection:bg-[#c8a96e]/20";
+  "min-h-screen bg-paper text-ink selection:bg-gold/20";
 const sectionTagClass =
-  "text-[0.58rem] font-light uppercase tracking-[0.35em] text-[#7a6741]";
+  "text-[0.58rem] font-light uppercase tracking-[0.35em] text-gold-ink";
 const bodyTextClass =
-  "text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-[#a09a8e]";
+  "text-[0.78rem] font-light leading-[2.1] tracking-[0.03em] text-secondary";
 
 function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -83,17 +83,17 @@ export function ProcessPageView() {
 
   return (
     <SiteShell>
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-end xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>How deals move</span>
-              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                 No stages
                 <br />
                 that do not serve
                 <br />
-                the <em className="not-italic text-[#c8a96e]">outcome.</em>
+                the <em className="not-italic text-gold-ink">outcome.</em>
               </p>
             </div>
           </Reveal>
@@ -109,33 +109,33 @@ export function ProcessPageView() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container">
           {steps.map((step) => (
             <Reveal key={step.index}>
-              <article className="grid gap-8 border-b border-white/[0.055] py-16 md:grid-cols-[100px_1fr_1fr] md:gap-16 last:border-b-0">
-              <div className="font-serif text-[4rem] font-light italic leading-none text-[#7a6741]/70">
+              <article className="grid gap-8 border-b border-rule py-16 md:grid-cols-[100px_1fr_1fr] md:gap-16 last:border-b-0">
+              <div className="font-serif text-[4rem] font-light italic leading-none text-gold-ink">
                 {step.index}
               </div>
               <div>
-                <p className="mb-5 text-[0.62rem] uppercase tracking-[0.22em] text-[#c8a96e]">
+                <p className="mb-5 text-[0.62rem] uppercase tracking-[0.22em] text-gold-ink">
                   {step.subtitle}
                 </p>
-                <h2 className="font-serif text-[clamp(1.8rem,2.5vw,2.4rem)] font-light leading-[1.1] text-[#e6e2d8]">
+                <h2 className="font-serif text-[clamp(1.8rem,2.5vw,2.4rem)] font-light leading-[1.1] text-ink">
                   {step.title}
                 </h2>
               </div>
               <div>
-                <p className="text-[0.75rem] font-light leading-[2.1] tracking-[0.03em] text-[#a09a8e]">
+                <p className="text-[0.75rem] font-light leading-[2.1] tracking-[0.03em] text-secondary">
                   {step.body}
                 </p>
                 <ul className="mt-6 flex flex-col gap-4">
                   {step.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex gap-4 text-[0.7rem] font-light leading-[1.8] text-[#a09a8e]"
+                      className="flex gap-4 text-[0.7rem] font-light leading-[1.8] text-secondary"
                     >
-                      <span className="mt-[0.55rem] block h-px w-5 shrink-0 bg-[#7a6741]" />
+                      <span className="mt-[0.55rem] block h-px w-5 shrink-0 bg-gold-ink" />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -147,12 +147,12 @@ export function ProcessPageView() {
         </div>
       </section>
 
-      <section className="site-section border-b border-white/[0.055] bg-[#0f0f0d]">
+      <section className="site-section border-b border-rule bg-panel">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-center xl:gap-24">
           <Reveal>
             <div>
               <span className={sectionTagClass}>Our Commitment</span>
-              <p className="mt-8 font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.12] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.12] text-ink">
                 What you can
                 <br />
                 hold us to.
@@ -170,12 +170,12 @@ export function ProcessPageView() {
               {timeline.map(([day, description]) => (
                 <div
                   key={day}
-                  className="flex gap-10 border-b border-white/[0.055] py-6 last:border-b-0"
+                  className="flex gap-10 border-b border-rule py-6 last:border-b-0"
                 >
-                  <div className="min-w-20 font-serif text-[1.4rem] font-light italic leading-none text-[#c8a96e]">
+                  <div className="min-w-20 font-serif text-[1.4rem] font-light italic leading-none text-gold-ink">
                     {day}
                   </div>
-                  <p className="pt-1 text-[0.72rem] leading-[1.8] text-[#a09a8e]">
+                  <p className="pt-1 text-[0.72rem] leading-[1.8] text-secondary">
                     {description}
                   </p>
                 </div>
@@ -249,17 +249,17 @@ export function AboutPageView() {
 
   return (
     <SiteShell>
-      <section className="site-section relative overflow-hidden border-b border-white/[0.055]">
+      <section className="site-section relative overflow-hidden border-b border-rule">
         <div className="site-container">
           <Reveal>
             <div className="max-w-[48.75rem]">
               <span className={sectionTagClass}>Who we are</span>
-              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                 Built for the deal
                 <br />
                 that requires more
                 <br />
-                than a <em className="not-italic text-[#c8a96e]">lender.</em>
+                than a <em className="not-italic text-gold-ink">lender.</em>
               </p>
               <p className={`${bodyTextClass} mt-8 max-w-[36.25rem]`}>
                 Surent Capital was founded on a specific conviction: that the
@@ -272,22 +272,22 @@ export function AboutPageView() {
             </div>
           </Reveal>
         </div>
-        <span className="pointer-events-none absolute bottom-8 right-[-2rem] hidden whitespace-nowrap font-serif text-[9rem] font-light tracking-[0.1em] text-[#c8a96e]/[0.03] xl:block">
+        <span className="pointer-events-none absolute bottom-8 right-[-2rem] hidden whitespace-nowrap font-serif text-[9rem] font-light tracking-[0.1em] text-gold-ink/[0.03] xl:block">
           SURENT
         </span>
       </section>
 
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container grid gap-12 md:grid-cols-2 md:items-start xl:gap-24">
           <Reveal>
             <div className="flex flex-col gap-10">
-            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-[#a09a8e]">
+            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-secondary">
               We operate as a principal-led platform, not a layered institution.
               That distinction matters. Every mandate we accept is evaluated by
               the people who will ultimately structure it, commit it, and close
               it.
             </p>
-            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-[#a09a8e]">
+            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-secondary">
               That structure creates an alignment that institutional capital
               cannot replicate. When Surent Capital commits to a deal, the
               people who made that commitment are the people who close it,
@@ -295,7 +295,7 @@ export function AboutPageView() {
               committee to re-approve. The decision made on day one is the
               commitment honored on closing day.
             </p>
-            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-[#a09a8e]">
+            <p className="text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-secondary">
               Our perspective is shaped by direct experience across structured
               finance, real estate investment, legal complexity, and sponsor
               execution. That multidisciplinary fluency allows us to see the
@@ -305,16 +305,16 @@ export function AboutPageView() {
           </Reveal>
           <Reveal delay={0.18}>
             <div>
-              <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+              <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-ink">
                 What we stand for.
               </h2>
               <div className="mt-8 flex flex-col">
                 {values.map(([title, description]) => (
-                  <div key={title} className="border-b border-white/[0.055] py-8 last:border-b-0">
-                    <h3 className="font-serif text-[1.3rem] font-light text-[#e6e2d8]">
+                  <div key={title} className="border-b border-rule py-8 last:border-b-0">
+                    <h3 className="font-serif text-[1.3rem] font-light text-ink">
                       {title}
                     </h3>
-                    <p className="mt-2 text-[0.7rem] font-light leading-[1.9] text-[#5c5852]">
+                    <p className="mt-2 text-[0.7rem] font-light leading-[1.9] text-muted">
                       {description}
                     </p>
                   </div>
@@ -325,7 +325,7 @@ export function AboutPageView() {
         </div>
       </section>
 
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container">
           <Reveal>
             <div className="mb-12">
@@ -342,19 +342,19 @@ export function AboutPageView() {
                 height={853}
                 className="relative z-10 aspect-[3/4] w-full object-cover object-center object-top"
               />
-              <span className="pointer-events-none absolute inset-[1.2rem_-1.2rem_-1.2rem_1.2rem] z-0 border border-[#7a6741]" />
+              <span className="pointer-events-none absolute inset-[1.2rem_-1.2rem_-1.2rem_1.2rem] z-0 border border-gold-ink" />
             </div>
           </Reveal>
             <Reveal delay={0.18}>
               <div className="pt-4">
-              <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.1] text-[#e6e2d8]">
+              <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.1] text-ink">
                 Robert World II
               </h2>
-              <p className="mt-3 text-[0.65rem] uppercase tracking-[0.3em] text-[#c8a96e]">
+              <p className="mt-3 text-[0.65rem] uppercase tracking-[0.3em] text-gold-ink">
                 Chief Executive Officer
               </p>
-              <div className="my-11 h-px w-10 bg-[#7a6741]" />
-              <p className="max-w-[32.5rem] text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-[#a09a8e]">
+              <div className="my-11 h-px w-10 bg-gold-ink" />
+              <p className="max-w-[32.5rem] text-[0.8rem] font-light leading-[2.2] tracking-[0.03em] text-secondary">
                 Robert World II founded Surent Capital on the conviction that
                 the most consequential real estate opportunities are routinely
                 passed over by capital sources unable to match their complexity
@@ -370,15 +370,15 @@ export function AboutPageView() {
         </div>
       </section>
 
-      <section className="site-section border-b border-white/[0.055] bg-[#0f0f0d]">
+      <section className="site-section border-b border-rule bg-panel">
         <div className="site-container">
           <Reveal>
             <div className="mb-12">
               <span className={sectionTagClass}>How we are different</span>
-              <p className="mt-8 font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-[#e6e2d8]">
+              <p className="mt-8 font-serif text-[clamp(1.5rem,2.5vw,2.2rem)] font-light leading-[1.15] text-ink">
                 The market has lenders.
                 <br />
-                <em className="not-italic text-[#c8a96e]">Surent is something else.</em>
+                <em className="not-italic text-gold-ink">Surent is something else.</em>
               </p>
             </div>
           </Reveal>
@@ -386,7 +386,7 @@ export function AboutPageView() {
             {columns.map((column, index) => (
               <Reveal key={column.heading}>
                 <div
-                  className={`border-b border-white/[0.055] pb-10 md:border-b-0 ${
+                  className={`border-b border-rule pb-10 md:border-b-0 ${
                     index < columns.length - 1 ? "md:border-r" : ""
                   } ${
                     index === 0
@@ -396,7 +396,7 @@ export function AboutPageView() {
                         : "md:px-12"
                   }`}
                 >
-                  <span className="mb-8 block text-[0.6rem] uppercase tracking-[0.25em] text-[#7a6741]">
+                  <span className="mb-8 block text-[0.6rem] uppercase tracking-[0.25em] text-gold-ink">
                     {column.heading}
                   </span>
                   <div className="flex flex-col gap-3">
@@ -404,11 +404,11 @@ export function AboutPageView() {
                       <div
                         key={item}
                         className={`flex gap-4 text-[0.73rem] leading-[2] ${
-                          column.highlight ? "text-[#e6e2d8]" : "text-[#a09a8e]"
+                          column.highlight ? "text-ink" : "text-secondary"
                         }`}
                       >
                         {column.highlight ? (
-                          <span className="mt-[0.6rem] block h-px w-4 shrink-0 bg-[#c8a96e]" />
+                          <span className="mt-[0.6rem] block h-px w-4 shrink-0 bg-gold" />
                         ) : null}
                         <span>{item}</span>
                       </div>
@@ -459,18 +459,18 @@ export function ContactPageView() {
 
   return (
     <SiteShell>
-      <section className="site-section border-b border-white/[0.055]">
+      <section className="site-section border-b border-rule">
         <div className="site-container grid md:grid-cols-2">
-          <div className="flex flex-col justify-between border-b border-white/[0.055] py-0 md:border-b-0 md:border-r md:pr-12">
+          <div className="flex flex-col justify-between border-b border-rule py-0 md:border-b-0 md:border-r md:pr-12">
             <Reveal>
               <div>
                 <span className={sectionTagClass}>Submit a deal</span>
-                <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-[#e6e2d8]">
+                <p className="mt-8 font-serif text-[clamp(3.2rem,6vw,6rem)] font-light leading-[0.94] tracking-[-0.01em] text-ink">
                   Present
                   <br />
                   your
                   <br />
-                  <em className="not-italic text-[#c8a96e]">situation.</em>
+                  <em className="not-italic text-gold-ink">situation.</em>
                 </p>
                 <p className={`${bodyTextClass} mt-8 max-w-[32rem]`}>
                   We engage principals directly. If the deal is real, we will
@@ -482,16 +482,16 @@ export function ContactPageView() {
             </Reveal>
             <Reveal delay={0.18}>
               <div className="mt-16 md:mt-0">
-                <p className="mb-6 text-[0.7rem] uppercase tracking-[0.08em] text-[#5c5852]">
+                <p className="mb-6 text-[0.7rem] uppercase tracking-[0.08em] text-muted">
                   Deals that fit our mandate
                 </p>
                 <ul className="flex flex-col">
                   {criteria.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-6 border-b border-white/[0.055] py-5 text-[0.7rem] tracking-[0.08em] text-[#5c5852] last:border-b-0"
+                      className="flex items-center gap-6 border-b border-rule py-5 text-[0.7rem] tracking-[0.08em] text-muted last:border-b-0"
                     >
-                      <span className="block h-[5px] w-[5px] shrink-0 rounded-full border border-[#7a6741]" />
+                      <span className="block h-[5px] w-[5px] shrink-0 rounded-full border border-gold-ink" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -508,22 +508,22 @@ export function ContactPageView() {
         </div>
       </section>
 
-      <section className="site-section-tight border-b border-white/[0.055]">
+      <section className="site-section-tight border-b border-rule">
         <div className="site-container grid md:grid-cols-3">
           {info.map((item, index) => (
             <Reveal key={item.label}>
               <div
-                className={`border-b border-white/[0.055] py-4 md:border-b-0 ${
+                className={`border-b border-rule py-4 md:border-b-0 ${
                   index < info.length - 1 ? "md:border-r md:pr-12" : "md:pl-12"
                 }`}
               >
-              <span className="mb-3 block text-[0.58rem] uppercase tracking-[0.28em] text-[#7a6741]">
+              <span className="mb-3 block text-[0.58rem] uppercase tracking-[0.28em] text-gold-ink">
                 {item.label}
               </span>
-              <div className="font-serif text-[1.1rem] font-light text-[#e6e2d8]">
+              <div className="font-serif text-[1.1rem] font-light text-ink">
                 {item.value}
               </div>
-              <p className="mt-2 text-[0.65rem] leading-[1.7] text-[#5c5852]">
+              <p className="mt-2 text-[0.65rem] leading-[1.7] text-muted">
                 {item.body}
               </p>
               </div>
