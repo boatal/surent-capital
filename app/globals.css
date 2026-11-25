@@ -8,6 +8,8 @@
   --line: #ddd6ca;
   --line-strong: #d0c6b5;
   --gold: #c8a96e;
+  --brand-mark-ink: #0b0b0a;
+  --brand-mark-gold: var(--gold);
   --gold-ink: #745928;
   --gold-pale: rgb(200 169 110 / 0.08);
   --gold-glow: rgb(200 169 110 / 0.15);
@@ -747,10 +749,26 @@ textarea {
   }
 }
 
+@media (max-width: 1180px) {
+  #global-nav {
+    padding-inline: 2rem;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 960px) {
   .nav-logo-mark {
-    width: 1.375rem;
-    height: 1.375rem;
+    width: 1.625rem;
+    height: 1.625rem;
   }
 
   .site-container,
@@ -813,6 +831,16 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  #global-nav {
+    padding-inline: 1rem;
+  }
+
+  .nav-logo {
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+  }
+
   .site-container,
   .footer-shell {
     padding-inline: 20px;
